@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signInWithEmail } from '../../utils/firebase.utils';
 import { signInWithGooglePopup } from '../../utils/firebase.utils';
 import { FormInput } from '../form-input/form-input.component';
@@ -22,10 +22,8 @@ export const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInWithEmail(email, password);
+      const { user } = await signInWithEmail(email, password);
       resetFormFields();
-      console.log(1);
-      console.log(response);
     } catch (err) {
       switch (err.code) {
         case 'auth/user-not-found':
@@ -42,8 +40,7 @@ export const SignInForm = () => {
 
   const googleSignInHandler = async () => {
     try {
-      const response = await signInWithGooglePopup();
-      console.log(response);
+      const { user } = await signInWithGooglePopup();
     } catch (err) {
       console.log(err.code);
     }
