@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './contexts/user.context';
 import { ProductsProvider } from './contexts/products.context';
-import { CartProvider } from './contexts/cart-dropdown.context';
+import { CartProvider } from './contexts/cart.context';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
